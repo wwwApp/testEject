@@ -57,9 +57,29 @@ const Button = props => {
       return (
         <TouchableOpacity>
           <Icon
-            style={[styles.iconStyle, styles.verticalIcon, { marginLeft: 10, marginRight: -10 }]}
+            style={[styles.iconStyle, styles.verticalIcon]}
             name="ios-more"
             size={25} /* onPress={this.loginWithFacebook} */
+          />
+        </TouchableOpacity>
+      );
+      case "pb-play":
+      return (
+        <TouchableOpacity>
+          <Icon
+            style={[styles.iconStyle]}
+            name="ios-play"
+            size={50}
+          />
+        </TouchableOpacity>
+      );
+      case "pb-pause":
+      return (
+        <TouchableOpacity>
+          <Icon
+            style={[styles.iconStyle]}
+            name="ios-more"
+            size={50}
           />
         </TouchableOpacity>
       );
