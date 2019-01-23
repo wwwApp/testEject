@@ -7,7 +7,7 @@ const Tag = props => {
   return (
     <View style={styles.tagContainer}>
       {this.state.tagData.map((item, index) => (
-        <Text style={styles.tagName}>{item}</Text>
+        <Text key={index} style={styles.tagName}>{item}</Text>
       ))}
     </View>
   );

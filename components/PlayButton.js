@@ -3,34 +3,27 @@ import {
   Alert,
   StyleSheet,
   TouchableOpacity,
-  Button, View
+  Button,
+  View
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 const PlayButton = () => {
   state = {
-    toggle: false
-    /* toggleIcon: 'ios-play', */
+    isPlaying: false
   };
 
   _onPress = () => {
-    const newState = !this.state.toggle;
-    this.setState({ toggle: newState });
+    /* let newState = this.state.toggle ? false : true;
+    this.setState({ isPlaying: newState }); */
   };
 
-  const { toggle } = this.state;
-  const iconName = toggle ? "ios-pause" : "ios-play";
   return (
-<View>
-    <TouchableOpacity style={styles.playButton} onPress={this._onPress}>
-      <Icon style={styles.iconStyle} name={iconName} size={50} />
-    </TouchableOpacity>
-    
-    {/* <Button style={styles.playButton} onPress={this._onPress} title="My Button">
-      <Icon style={styles.iconStyle} name={iconName} size={50} />
-    </Button> */}
+    <View>
+      <TouchableOpacity style={styles.playButton} onPress={() => this._onPress() }>
+        <Icon style={styles.iconStyle} name={this.state.isPlaying ? "ios-pause" : "ios-play"} size={50} />
+      </TouchableOpacity>
     </View>
-
   );
 };
 
@@ -41,7 +34,7 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
     backgroundColor: "#E7E7E7",
-    borderRadius: 90,
+    borderRadius: 90
   },
   iconStyle: {
     marginRight: -5,
