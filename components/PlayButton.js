@@ -1,47 +1,73 @@
-import React from "react";
-import {
-  Alert,
-  StyleSheet,
-  TouchableOpacity,
-  Button, View
-} from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import React, { Component } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const PlayButton = () => {
-  state = {
-    toggle: false
-    /* toggleIcon: 'ios-play', */
-  };
+class PlayButton extends Component {
+  /**
+   *
+   * @param {required} props
+   * Use the class constructor to set the initial state
+   * for your component.
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggle: false,
+      toggleIcon: 'ios-play'
+    };
+  }
 
-  _onPress = () => {
-    const newState = !this.state.toggle;
-    this.setState({ toggle: newState });
-  };
+  /**
+   * Handle the play/pause button press event.
+   */
+  onPress() {
+    /**
+     * If you name your variables the same name as your state
+     * properties, you can simplify your setState call.
+     */
+    const toggle = !this.state.toggle;
+    const toggleIcon = toggle ? 'ios-pause' : 'ios-play';
+    this.setState({ toggle, toggleIcon });
 
-  const { toggle } = this.state;
-  const iconName = toggle ? "ios-pause" : "ios-play";
-  return (
-<View>
-    <TouchableOpacity style={styles.playButton} onPress={this._onPress}>
-      <Icon style={styles.iconStyle} name={iconName} size={50} />
-    </TouchableOpacity>
-    
-    {/* <Button style={styles.playButton} onPress={this._onPress} title="My Button">
-      <Icon style={styles.iconStyle} name={iconName} size={50} />
-    </Button> */}
-    </View>
+    /**
+     * The above setState is the same as:
+     * this.setState({ toggle: toggle, toggleIcon: toggleIcon })
+     * Since the state property name is the same as the variable
+     * name being used to update the state, you dont' have to
+     * specify the name twice.
+     */
+  }
 
-  );
-};
+  render() {
+    return (
+      <View>
+        <TouchableOpacity
+          style={styles.playButton}
+          /**
+           * ✨ You have to bind the context in order for the
+           * method to have access to the state object.
+           */
+          onPress={this.onPress.bind(this)}
+        >
+          <Icon
+            style={styles.iconStyle}
+            name={this.state.toggleIcon}
+            size={50}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   playButton: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 90,
     height: 90,
-    backgroundColor: "#E7E7E7",
-    borderRadius: 90,
+    backgroundColor: '#E7E7E7',
+    borderRadius: 90
   },
   iconStyle: {
     marginRight: -5,

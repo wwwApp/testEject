@@ -1,5 +1,5 @@
-import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import React from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 
 const Tag = props => {
   state = { tagData: props.tagData };
@@ -7,7 +7,9 @@ const Tag = props => {
   return (
     <View style={styles.tagContainer}>
       {this.state.tagData.map((item, index) => (
-        <Text style={styles.tagName}>{item}</Text>
+        <Text key={index} style={styles.tagName}>
+          {item}
+        </Text>
       ))}
     </View>
   );
@@ -15,18 +17,18 @@ const Tag = props => {
 
 const styles = StyleSheet.create({
   tagContainer: {
-      flexDirection: 'row',
+    flexDirection: 'row'
   },
   tagName: {
-    color: "white",
+    color: 'white',
     fontSize: 10,
-    fontFamily: "Avenir",
-    borderColor: "white",
+    fontFamily: 'Avenir',
+    borderColor: 'white',
     borderWidth: 1,
     borderRadius: 13,
     paddingVertical: 5,
     paddingHorizontal: 15,
-    marginRight: 10,
+    marginRight: 10
   }
 });
 
