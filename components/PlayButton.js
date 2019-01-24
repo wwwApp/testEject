@@ -62,6 +62,7 @@ class PlayButton extends Component {
 
 const styles = StyleSheet.create({
   playButton: {
+      flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     width: 90,
@@ -70,8 +71,6 @@ const styles = StyleSheet.create({
     borderRadius: 90
   },
   iconStyle: {
-    marginRight: -5,
-    marginTop: 5,
   }
 });
 
