@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React, { Component } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
 class PlayButton extends Component {
   /**
@@ -13,7 +13,7 @@ class PlayButton extends Component {
     super(props);
     this.state = {
       toggle: false,
-      toggleIcon: 'ios-play'
+      toggleIcon: "ios-play"
     };
   }
 
@@ -26,16 +26,8 @@ class PlayButton extends Component {
      * properties, you can simplify your setState call.
      */
     const toggle = !this.state.toggle;
-    const toggleIcon = toggle ? 'ios-pause' : 'ios-play';
+    const toggleIcon = toggle ? "ios-pause" : "ios-play";
     this.setState({ toggle, toggleIcon });
-
-    /**
-     * The above setState is the same as:
-     * this.setState({ toggle: toggle, toggleIcon: toggleIcon })
-     * Since the state property name is the same as the variable
-     * name being used to update the state, you dont' have to
-     * specify the name twice.
-     */
   }
 
   render() {
@@ -50,7 +42,14 @@ class PlayButton extends Component {
           onPress={this.onPress.bind(this)}
         >
           <Icon
-            style={styles.iconStyle}
+            style={[
+                /**
+                 * toggle between {pause_styleSheet} : {play_styleSheet}
+                 */
+              this.state.toggle
+                ? { marginTop: 5 }
+                : { marginLeft: 5, marginTop: 5 }
+            ]}
             name={this.state.toggleIcon}
             size={50}
           />
@@ -62,16 +61,15 @@ class PlayButton extends Component {
 
 const styles = StyleSheet.create({
   playButton: {
-      flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
     width: 90,
     height: 90,
-    backgroundColor: '#E7E7E7',
+    backgroundColor: "#E7E7E7",
     borderRadius: 90
   },
-  iconStyle: {
-  }
+  iconStyle: {}
 });
 
 export { PlayButton };
