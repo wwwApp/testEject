@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, ScrollView } from "react-native";
 import { Button } from "./Button";
+import { Colors } from "../styles/Colors";
 
 class TrackList extends Component {
   /**
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   },
   trackItem: {
     fontFamily: "Avenir",
-    color: "white",
+    color: Colors.defaultFont,
     fontSize: 16
   },
   arist: {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { Colors } from "./../styles/Colors";
 
 class Button extends Component {
   /**
@@ -16,6 +17,7 @@ class Button extends Component {
 
   render() {
     switch (this.state.type) {
+      // Icons from top-bar
       case "heart":
         return (
           <TouchableOpacity>
@@ -50,6 +52,20 @@ class Button extends Component {
             />
           </TouchableOpacity>
         );
+        case "minimize":
+        return (
+          <TouchableOpacity>
+            <Icon
+              style={[
+                styles.iconStyle,
+                styles.verticalIcon
+              ]}
+              name="ios-arrow-back"
+              size={35}
+            />
+          </TouchableOpacity>
+        );
+      // Icons from track item
       case "track-star":
         return (
           <TouchableOpacity>
@@ -70,6 +86,7 @@ class Button extends Component {
             />
           </TouchableOpacity>
         );
+      // Icons from playbutton
       case "pb-play":
         return (
           <TouchableOpacity>
@@ -94,10 +111,10 @@ class Button extends Component {
 
 const styles = StyleSheet.create({
   iconStyle: {
-    color: "white"
+    color: Colors.defaultIcon
   },
   verticalIcon: {
-    transform: [{ rotate: "90deg" }]
+    transform: [{ rotate: "270deg" }]
   }
 });
 

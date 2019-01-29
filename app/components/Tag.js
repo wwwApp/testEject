@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from "react-native";
+import { Colors } from "../styles/Colors";
 
 class Tag extends Component {
   /**
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   tagName: {
-    color: "white",
+    color: Colors.defaultFont,
     fontSize: 10,
     fontFamily: "Avenir",
     borderColor: "white",

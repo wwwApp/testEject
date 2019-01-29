@@ -5,38 +5,52 @@ import { Button } from "./../components/Button";
 import { Tag } from "./../components/Tag";
 import { PlayButton } from "./../components/PlayButton";
 import LinearGradient from "react-native-linear-gradient";
+import { Colors } from "./../styles/Colors";
 
 class Playlist extends Component {
-  state = {
-    title: "Playlist Title",
-    user: "@User",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    albumImg:
-      "https://images-na.ssl-images-amazon.com/images/I/A1QsthUoerL._SY355_.jpg",
-    tag: ["Tag1", "Tag2", "Tag3"],
-    location: "Location",
-    mood: "Mood",
-    tracks: [
-      { trackInfo: "Track 1", artistInfo: "Artist1", duration: "03:00" },
-      { trackInfo: "Track 2", artistInfo: "Artist2", duration: "03:00" },
-      { trackInfo: "Track 3", artistInfo: "Artist3", duration: "03:00" },
-      { trackInfo: "Track 4", artistInfo: "Artist4", duration: "03:00" },
-      { trackInfo: "Track 5", artistInfo: "Artist5", duration: "03:00" },
-      { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
-      { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
-      { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
-      { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
-      { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
-      { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
-      { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" }
-    ]
-  };
+  /**
+   *
+   * @param {required} props
+   * Use the class constructor to set the initial state
+   * for your component.
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "Playlist Title",
+      user: "@User",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      albumImg:
+        "https://images-na.ssl-images-amazon.com/images/I/A1QsthUoerL._SY355_.jpg",
+      tag: ["Tag1", "Tag2", "Tag3"],
+      location: "Location",
+      mood: "Mood",
+      tracks: [
+        { trackInfo: "Track 1", artistInfo: "Artist1", duration: "03:00" },
+        { trackInfo: "Track 2", artistInfo: "Artist2", duration: "03:00" },
+        { trackInfo: "Track 3", artistInfo: "Artist3", duration: "03:00" },
+        { trackInfo: "Track 4", artistInfo: "Artist4", duration: "03:00" },
+        { trackInfo: "Track 5", artistInfo: "Artist5", duration: "03:00" },
+        { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
+        { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
+        { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
+        { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
+        { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
+        { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" },
+        { trackInfo: "Track 6", artistInfo: "Artist6", duration: "03:00" }
+      ]
+    };
+  }
 
   render() {
     return (
+      // Container View
       // Change the color values based on mood calculated from server for bg color
-      <LinearGradient style={styles.container} colors={["#E23955", "#553484"]}>
+      <LinearGradient
+        style={styles.container}
+        colors={[Colors.tintTopGradient, Colors.tintBottomGradient]}
+      >
         <View style={styles.playButton}>
           <PlayButton />
         </View>
@@ -62,8 +76,6 @@ class Playlist extends Component {
           <Text style={[styles.playlistItem, styles.user, styles.txtLight]}>
             {this.state.user}
           </Text>
-          {/* <Text style = {[styles.playlistItem,styles.playlistAlbum]}>Album Image</Text>
-            <Text style = {[styles.playlistItem,styles.playlistMood]}>{item.mood}</Text> */}
         </View>
         <TrackList trackData={this.state.tracks} />
       </LinearGradient>
@@ -74,8 +86,7 @@ class Playlist extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#cc0066",
-    alignItems: "flex-start",
+    alignItems: "center",
     padding: 40,
     paddingTop: 50
   },
@@ -91,7 +102,7 @@ const styles = StyleSheet.create({
   },
   playlistItem: {
     fontFamily: "Avenir",
-    color: "white"
+    color: Colors.defaultFont
   },
   title: {
     fontSize: 30

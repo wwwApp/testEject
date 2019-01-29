@@ -8,19 +8,59 @@
 
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
-import { createAppContainer } from "react-navigation";
+import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import Playlist from "./app/views/Playlist";
-import Home from "./app/views/Home";
+import Player from "./app/views/Player";
+import { Colors } from "./app/styles/Colors";
 
-const BottomNav = createMaterialBottomTabNavigator(
+/**
+ * Some random pages for tab navigation demo
+ */
+class Home extends Component {
+  render() {
+    return (
+      <View>
+        <Text style={{ fontSize: 50, marginTop: 300, textAlign: "center" }}>
+          {" "}
+          HOME PAGE{" "}
+        </Text>
+      </View>
+    );
+  }
+}
+
+class First extends Component {
+  render() {
+    return (
+      <View>
+        <Text style={{ fontSize: 50, marginTop: 300, textAlign: "center" }}>
+          {" "}
+          FIRST PAGE{" "}
+        </Text>
+      </View>
+    );
+  }
+}
+
+/**
+ * Tab Navigation Config.
+ */
+
+const BottomNav = createBottomTabNavigator(
   {
     Home: { screen: Home },
-    Playlist: { screen: Playlist }
+    First: { screen: First },
+    Playlist: { screen: Playlist },
+    Player: { screen: Player }
   },
   {
-    initialRouteName: "Home",
-    order: ["Home", "Playlist"]
+    tabBarOptions: {
+      activeTintColor: "#F8F8F8",
+      inactiveTintColor: Colors.tabIconInactive,
+      style: {
+        backgroundColor: Colors.tabNav
+      }
+    }
   }
 );
 
